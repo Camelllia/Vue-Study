@@ -20,8 +20,8 @@ export default {
     return {
       price1 : 60,
       price2 : 80,
-      name1 : "서울",
-      name2 : "부산",
+      name1 : "MAC 환경",
+      name2 : "테스트",
     }
   },
   components: {
