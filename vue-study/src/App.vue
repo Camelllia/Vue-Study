@@ -9,15 +9,15 @@
   <section class="intro">
       <div class="login-area">
           <div class="login">
-              <form>
+              <form v-on:submit="Login()">
                   <!--[s] ==============아이디 컴포넌트==============-->
-                  <InputID></InputID>
+                  <InputID v-model="loginInfo.userId"></InputID>
                   <!--[e] ==============아이디 컴포넌트==============-->
 
                   <!--[s] ==============비밀번호 컴포넌트==============-->
-                  <InputPassword></InputPassword>
+                  <InputPassword v-model="loginInfo.userPw"></InputPassword>
                   <!--[e] ==============비밀번호 컴포넌트==============-->
-
+            
                   <button type="submit" class="btn btn-login">login</button>
               </form>
           </div>
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-
 import InputID from './components/IdInput.vue';
 import InputPassword from './components/PwInput.vue';
 
@@ -34,7 +33,12 @@ export default {
   name: 'App',
 
   data() {
-      return {};
+    return {
+      loginInfo: {
+        userId : "",
+        userPw : ""
+      }
+    };
   },
 
   components: {
@@ -42,9 +46,18 @@ export default {
     InputPassword
   },
 
-  methods: {},
+  methods: {
+    Login: function() {
+      if(!this.loginInfo.userId || !this.loginInfo.userPw) {
+        alert("입력되지 않은 필드가 존재합니다.");
+        return;
+      }
+    },
+  },
 
-  computed: {},
+  computed: {
+    
+  },
   beforeCreate: function () {},
   created: function () {},
   mounted: function () {},
